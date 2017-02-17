@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-color:#f3cb60;
+        }
+        h2{
+            color:blue;
+        }
+        .container{
+            margin:30px auto;
+        }
+        span{
+            color: green;
+            font-size:4rem;
+        }
+        .status{
+            font-size:2rem;
+        }
+        .daily-ul-li {
+            font-size: 1.8rem;
+            float: left;
+            background-color: #F99;
+            margin: 2px;
+            text-align: center;
+            padding: 2px;
+        }
+        ul li {
+            list-style: none;
+        }
+        ul {
+            list-tyle: none;
+            margin: 10px;
+            padding: 10px;
+        }
+        .daily {
+            margin-left:6%;
+            margin-right:auto;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+
+</head>
+<body>
+
+<div class = "container">
+    <div class="text-center">
+        <span>FreeCodeCamp Weather</span>
+    </div>
+    <div class="col-xs-12 col-md-12">
+        <div class="text-center status">
+            <hr>
+            <h2></h2>
+            <p class="loc">日期：</p>
+            <p class="temprature">温度：</p>
+            <p class="weather">天气：</p>
+            <p class="dir_index">风向：</p>
+        </div>
+        <hr>
+    </div>
+    <h3 class="text-center">未来6天天气</br></h3>
+    <div class="daily">
+        <ul class="daily-ul"></ul>
+    </div>
+</div>
+
+
+<script>
+console.log(remote_ip_info);
+    $(document).ready(function() {
+        var httpRequest = "https://api.heweather.com/x3/weather?city="+remote_ip_info.city+"&key=b1de43c2fbc04ab6978c185bfa29abba";
+        $.getJSON(httpRequest, function(json){
+            var data = json["HeWeather data service 3.0"][0];
+            var weather = data["now"]["cond"]["txt"];
+            var temprature = data["now"]["tmp"];
+            var loc = data["basic"]["update"]["loc"];
+            var dir = data["now"]["wind"]['dir'];
+            var dailyReports = data["daily_forecast"];
+            $("h2").html(remote_ip_info.city);
+            $(".loc").html("日期："+loc);
+            $(".temprature").html("温度："+temprature + "&#8451;");
+            $(".weather").html("天气："+weather);
+            $(".dir_index").html("风像："+dir);
+            var htmlStr = "";
+            for (var i = 0; i < dailyReports.length; i++) {
+                htmlStr += "<li class='daily-ul-li'>";
+                htmlStr += "<ul class='daily-ul-li-ul'>";
+                htmlStr += "<li class='daily-ul-li-ul-li'>" + dailyReports[i]["date"] + "</li>";
+                htmlStr += "<li class='daily-ul-li-ul-li'>" + dailyReports[i]["tmp"]["max"] + "-" + dailyReports[i]["tmp"]["min"] + "</li>";
+                htmlStr += "<li class='daily-ul-li-ul-li'>" + dailyReports[i]["cond"]["txt_d"] + "-" + dailyReports[i]["cond"]["txt_n"] + "</li>";
+                htmlStr += "</ul></li>";
+                $(".daily-ul").html(htmlStr);
+            }
+
+        });
+    })
+
+</script>
+</body>
+</html>
