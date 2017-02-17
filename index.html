@@ -46,7 +46,7 @@
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="//int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<!--    <script src="//int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>-->
 
 </head>
 <body>
@@ -74,9 +74,9 @@
 
 
 <script>
-console.log(remote_ip_info);
+
     $(document).ready(function() {
-        var httpRequest = "https://api.heweather.com/x3/weather?city="+remote_ip_info.city+"&key=b1de43c2fbc04ab6978c185bfa29abba";
+        var httpRequest = "https://api.heweather.com/x3/weather?city="+'镇江'+"&key=b1de43c2fbc04ab6978c185bfa29abba";
         $.getJSON(httpRequest, function(json){
             var data = json["HeWeather data service 3.0"][0];
             var weather = data["now"]["cond"]["txt"];
@@ -84,7 +84,7 @@ console.log(remote_ip_info);
             var loc = data["basic"]["update"]["loc"];
             var dir = data["now"]["wind"]['dir'];
             var dailyReports = data["daily_forecast"];
-            $("h2").html(remote_ip_info.city);
+            $("h2").html("镇江");
             $(".loc").html("日期："+loc);
             $(".temprature").html("温度："+temprature + "&#8451;");
             $(".weather").html("天气："+weather);
