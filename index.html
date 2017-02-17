@@ -94,7 +94,7 @@ console.log(remote_ip_info);
                 htmlStr += "<li class='daily-ul-li'>";
                 htmlStr += "<ul class='daily-ul-li-ul'>";
                 htmlStr += "<li class='daily-ul-li-ul-li'>" + dailyReports[i]["date"] + "</li>";
-                htmlStr += "<li class='daily-ul-li-ul-li'>" + dailyReports[i]["tmp"]["max"] + "-" + dailyReports[i]["tmp"]["min"] + "</li>";
+                htmlStr += "<li class='daily-ul-li-ul-li'>" + dailyReports[i]["tmp"]["max"] + "&#8451;"+ "~" + dailyReports[i]["tmp"]["min"]  + "&#8451;"+"</li>";
                 htmlStr += "<li class='daily-ul-li-ul-li'>" + dailyReports[i]["cond"]["txt_d"] + "-" + dailyReports[i]["cond"]["txt_n"] + "</li>";
                 htmlStr += "</ul></li>";
                 $(".daily-ul").html(htmlStr);
