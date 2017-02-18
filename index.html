@@ -2,6 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+
     <title></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <style>
@@ -46,7 +47,7 @@
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<!--    <script src="//int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>-->
+
 
 </head>
 <body>
@@ -76,6 +77,8 @@
 <script>
 
     $(document).ready(function() {
+        var  remote_ip_info;
+
         var httpRequest = "https://api.heweather.com/x3/weather?city="+'镇江'+"&key=b1de43c2fbc04ab6978c185bfa29abba";
         $.getJSON(httpRequest, function(json){
             var data = json["HeWeather data service 3.0"][0];
